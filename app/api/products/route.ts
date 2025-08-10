@@ -8,7 +8,6 @@ const products: Product[] = [
   { id: 4, name: "Producto 4", price: 180 },
   { id: 5, name: "Producto 5", price: 120 },
   { id: 6, name: "Producto 6", price: 250 },
-
 ];
 
 export async function GET(): Promise<NextResponse<ApiResponse<Product[]>>> {

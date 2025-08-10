@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Optimizer = () => {
+const OptimizerPage = () => {
   return (
     <div>
       <h1>Optimizer</h1>
@@ -8,4 +8,4 @@ const Optimizer = () => {
   )
 }
 
-export default Optimizer
+export default OptimizerPage

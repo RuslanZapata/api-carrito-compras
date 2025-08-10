@@ -34,6 +34,27 @@ export function ProductList({ onProductAdded }: ProductListProps) {
     }
   };
 
+  const addToCart = async (productId: number) => {
+    setAddingToCart(productId);
+    try {
+      const response = await fetch('/api/cart', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ productId }),
+      });
+      const data = await response.json();
+      if (data.success) {
+        toast.success(`${data.data.items.find((item: Product) => item.id === productId)?.name || 'Producto'} agregado al carrito`);
+        onProductAdded?.();
+      } else {
+        toast.error(data.message || 'Error al agregar producto');
+      }
+    } catch (error) {
+      toast.error('Error de conexión al agregar producto');
+    } finally {
+      setAddingToCart(null);
+    }
+  };
 
   if (loading) {
     return <ProductListSkeleton />;
@@ -45,6 +66,7 @@ export function ProductList({ onProductAdded }: ProductListProps) {
         <ProductCard
           key={product.id}
           product={product}
+          onAddToCart={addToCart}
           loading={addingToCart === product.id}
         />
       ))}

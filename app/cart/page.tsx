@@ -1,11 +1,21 @@
-import React from 'react'
+"use client";
+import React from "react";
+import { useCartRefresh } from "../context/CartRefreshContext";
+import Cart from "../components/Cart";
 
-const Cart = () => {
+const CartPage = () => {
+  const cartRefreshContext = useCartRefresh();
+
+  if (!cartRefreshContext) {
+    return null;
+  }
+
+  const { cartRefreshTrigger } = cartRefreshContext;
   return (
-    <div>
-      <h1>Cart</h1>
+    <div className="max-w-2xl mx-auto">
+      <Cart refreshTrigger={cartRefreshTrigger} />
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default CartPage;
