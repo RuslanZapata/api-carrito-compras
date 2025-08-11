@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCart, addToCart, clearCart } from "@/utils/cart";
 import { Product, ApiResponse, Cart } from "@/types";
 
-// Lista de productos disponibles
 const availableProducts: Product[] = [
   { id: 1, name: "Producto 1", price: 60 },
   { id: 2, name: "Producto 2", price: 100 },

@@ -13,16 +13,13 @@ import { useCartRefresh } from "@/context/CartRefreshContext";
 export default function Home() {
   const cartRefreshContext = useCartRefresh();
   if (!cartRefreshContext) {
-    // Puedes mostrar un mensaje de error, retornar null, o lanzar una excepción
     return null;
   }
   const { setCartRefreshTrigger } = cartRefreshContext;
   const handleProductAdded = () => {
     setCartRefreshTrigger((prev) => prev + 1);
   };
-  {
-    /* Lista de productos */
-  }
+
   return (
     <TabsContent value="products" className="space-y-6">
       <Card>

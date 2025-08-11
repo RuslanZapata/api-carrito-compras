@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { Product, ApiResponse } from "../../../types";
 import { findBestCombination } from "@/utils/budgetOptimizer";
 
-// Productos para optimización de presupuesto
 const optimizerProducts: Product[] = [
   { id: 1, name: "Producto 1", price: 60 },
   { id: 2, name: "Producto 2", price: 100 },
