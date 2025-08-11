@@ -1,14 +1,19 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Calculator } from 'lucide-react';
-import { Product } from '../types';
-import { toast } from 'sonner';
-import AvailableProducts from './AvailableProducts';
-import BudgetInput from './BudgetInput';
-import OptimizationResultView from './OptimizationResultView';
-import BudgetOptimizerSkeleton from './BudgetOptimizerSkeleton';
+import { useState, useEffect } from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/atoms/card";
+import { Calculator } from "lucide-react";
+import { Product } from "@/types";
+import { toast } from "sonner";
+import AvailableProducts from "./AvailableProducts";
+import BudgetInput from "./BudgetInput";
+import OptimizationResultView from "./OptimizationResultView";
+import BudgetOptimizerSkeleton from "./BudgetOptimizerSkeleton";
 
 interface OptimizationResult {
   products: Product[];
@@ -18,8 +23,10 @@ interface OptimizationResult {
 
 export default function BudgetOptimizer() {
   const [availableProducts, setAvailableProducts] = useState<Product[]>([]);
-  const [budget, setBudget] = useState<string>('150');
-  const [optimization, setOptimization] = useState<OptimizationResult | null>(null);
+  const [budget, setBudget] = useState<string>("150");
+  const [optimization, setOptimization] = useState<OptimizationResult | null>(
+    null
+  );
   const [loading, setLoading] = useState(false);
   const [loadingProducts, setLoadingProducts] = useState(true);
 
@@ -29,15 +36,15 @@ export default function BudgetOptimizer() {
 
   const fetchAvailableProducts = async () => {
     try {
-      const response = await fetch('/api/budget-optimizer');
+      const response = await fetch("/api/budget-optimizer");
       const data = await response.json();
       if (data.success) {
         setAvailableProducts(data.data);
       } else {
-        toast.error(data.message || 'Error al cargar productos');
+        toast.error(data.message || "Error al cargar productos");
       }
     } catch (error) {
-      toast.error('Error de conexión al cargar productos');
+      toast.error("Error de conexión al cargar productos");
     } finally {
       setLoadingProducts(false);
     }
@@ -46,25 +53,27 @@ export default function BudgetOptimizer() {
   const optimizeBudget = async () => {
     const budgetNumber = Number(budget);
     if (isNaN(budgetNumber) || budgetNumber <= 0) {
-      toast.error('Por favor ingresa un presupuesto válido');
+      toast.error("Por favor ingresa un presupuesto válido");
       return;
     }
     setLoading(true);
     try {
-      const response = await fetch('/api/budget-optimizer', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/budget-optimizer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ budget: budgetNumber }),
       });
       const data = await response.json();
       if (data.success) {
         setOptimization(data.data);
-        toast.success(`Optimización completada: ${data.data.products.length} productos seleccionados`);
+        toast.success(
+          `Optimización completada: ${data.data.products.length} productos seleccionados`
+        );
       } else {
-        toast.error(data.message || 'Error al optimizar presupuesto');
+        toast.error(data.message || "Error al optimizar presupuesto");
       }
     } catch (error) {
-      toast.error('Error de conexión al optimizar presupuesto');
+      toast.error("Error de conexión al optimizar presupuesto");
     } finally {
       setLoading(false);
     }

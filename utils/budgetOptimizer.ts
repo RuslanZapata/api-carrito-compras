@@ -1,4 +1,4 @@
-import { Product } from '../types';
+import { Product } from '@/types';
 
 export function findBestCombination(products: Product[], budget: number): Product[] {
   if (!products || products.length === 0 || budget <= 0) {

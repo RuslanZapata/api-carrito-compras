@@ -1,4 +1,9 @@
-import { Card, CardContent, CardFooter, CardHeader } from '../ui/card';
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+} from "@/components/atoms/card";
 
 export function ProductListSkeleton() {
   return (

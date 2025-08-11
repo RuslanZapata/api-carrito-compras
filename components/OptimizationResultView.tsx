@@ -1,6 +1,6 @@
-import { Badge } from '../ui/badge';
-import { Separator } from '../ui/separator';
-import { Product } from '../types';
+import { Badge } from "@/components/atoms/badge";
+import { Separator } from "@/components/atoms/separator";
+import { Product } from "@/types";
 
 interface OptimizationResult {
   products: Product[];
@@ -12,7 +12,9 @@ interface OptimizationResultViewProps {
   optimization: OptimizationResult | null;
 }
 
-export default function OptimizationResultView({ optimization }: OptimizationResultViewProps) {
+export default function OptimizationResultView({
+  optimization,
+}: OptimizationResultViewProps) {
   if (!optimization) return null;
 
   return (
@@ -28,7 +30,10 @@ export default function OptimizationResultView({ optimization }: OptimizationRes
         ) : (
           <>
             {optimization.products.map((product) => (
-              <div key={product.id} className="flex items-center justify-between">
+              <div
+                key={product.id}
+                className="flex items-center justify-between"
+              >
                 <span className="text-sm">{product.name}</span>
                 <Badge variant="secondary">${product.price}</Badge>
               </div>

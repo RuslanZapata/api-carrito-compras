@@ -1,13 +1,13 @@
 import { FC, PropsWithChildren } from "react";
-import { roboto } from "./ui/fonts";
-import "./ui/globals.css";
-import Header from "./components/Header";
-import { Tabs } from "./ui/tabs";
-import MainTab from "./components/MainTab";
-import { CartRefreshProvider } from "./context/CartRefreshContext";
+import { roboto } from "@/utils/fonts";
+import "./globals.css";
+import Header from "@/components/Header";
+import { Tabs } from "@/components/atoms/tabs";
+import MainTab from "@/components/MainTab";
+import { CartRefreshProvider } from "@/context/CartRefreshContext";
+import { Toaster } from "@/components/atoms/sonner";
 
 const RootLayout: FC<PropsWithChildren> = ({ children }) => {
-  
   return (
     <html lang="es">
       <body className={`${roboto.className} antialiased`}>
@@ -22,6 +22,7 @@ const RootLayout: FC<PropsWithChildren> = ({ children }) => {
             </div>
           </div>
         </CartRefreshProvider>
+        <Toaster position="top-right" richColors expand={true} closeButton />
       </body>
     </html>
   );

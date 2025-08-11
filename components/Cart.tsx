@@ -1,13 +1,18 @@
-'use client';
+"use client";
 
-import { useState, useEffect } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Badge } from '../ui/badge';
-import { ShoppingCart } from 'lucide-react';
-import { Cart as CartType } from '../types';
-import { toast } from 'sonner';
-import { CartItems } from './CartItems';
-import { CartSkeleton } from './CartSkeleton';
+import { useState, useEffect } from "react";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/atoms/card";
+import { Badge } from "@/components/atoms/badge";
+import { ShoppingCart } from "lucide-react";
+import { Cart as CartType } from "@/types";
+import { toast } from "sonner";
+import { CartItems } from "./CartItems";
+import { CartSkeleton } from "./CartSkeleton";
 
 interface CartProps {
   refreshTrigger?: number;
@@ -24,15 +29,15 @@ export default function Cart({ refreshTrigger }: CartProps) {
 
   const fetchCart = async () => {
     try {
-      const response = await fetch('/api/cart');
+      const response = await fetch("/api/cart");
       const data = await response.json();
       if (data.success) {
         setCart(data.data);
       } else {
-        toast.error(data.message || 'Error al cargar el carrito');
+        toast.error(data.message || "Error al cargar el carrito");
       }
     } catch (error) {
-      toast.error('Error de conexión al cargar el carrito');
+      toast.error("Error de conexión al cargar el carrito");
     } finally {
       setLoading(false);
     }
@@ -41,18 +46,18 @@ export default function Cart({ refreshTrigger }: CartProps) {
   const clearCart = async () => {
     setClearing(true);
     try {
-      const response = await fetch('/api/cart', {
-        method: 'DELETE',
+      const response = await fetch("/api/cart", {
+        method: "DELETE",
       });
       const data = await response.json();
       if (data.success) {
         setCart(data.data);
-        toast.success('Carrito vaciado exitosamente');
+        toast.success("Carrito vaciado exitosamente");
       } else {
-        toast.error(data.message || 'Error al vaciar el carrito');
+        toast.error(data.message || "Error al vaciar el carrito");
       }
     } catch (error) {
-      toast.error('Error de conexión al vaciar el carrito');
+      toast.error("Error de conexión al vaciar el carrito");
     } finally {
       setClearing(false);
     }

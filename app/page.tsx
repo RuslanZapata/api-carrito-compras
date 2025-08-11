@@ -1,9 +1,14 @@
 "use client";
 import { Package } from "lucide-react";
-import { TabsContent } from "./ui/tabs";
-import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
-import { ProductList } from "./components/ProductList";
-import { useCartRefresh } from "./context/CartRefreshContext";
+import { TabsContent } from "@/components/atoms/tabs";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/atoms/card";
+import { ProductList } from "@/components/ProductList";
+import { useCartRefresh } from "@/context/CartRefreshContext";
 
 export default function Home() {
   const cartRefreshContext = useCartRefresh();

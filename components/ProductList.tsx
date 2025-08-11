@@ -1,9 +1,9 @@
-'use client';
-import { useState, useEffect } from 'react';
-import { toast } from 'sonner';
-import { Product } from '../types';
-import { ProductCard } from './ProductCard';
-import { ProductListSkeleton } from './ProductListSkeleton';
+"use client";
+import { useState, useEffect } from "react";
+import { toast } from "sonner";
+import { Product } from "@/types";
+import { ProductCard } from "./ProductCard";
+import { ProductListSkeleton } from "./ProductListSkeleton";
 
 interface ProductListProps {
   onProductAdded?: () => void;
@@ -20,15 +20,15 @@ export function ProductList({ onProductAdded }: ProductListProps) {
 
   const fetchProducts = async () => {
     try {
-      const response = await fetch('/api/products');
+      const response = await fetch("/api/products");
       const data = await response.json();
       if (data.success) {
         setProducts(data.data);
       } else {
-        toast.error(data.message || 'Error al cargar productos');
+        toast.error(data.message || "Error al cargar productos");
       }
     } catch (error) {
-      toast.error('Error de conexión al cargar productos');
+      toast.error("Error de conexión al cargar productos");
     } finally {
       setLoading(false);
     }
@@ -37,20 +37,25 @@ export function ProductList({ onProductAdded }: ProductListProps) {
   const addToCart = async (productId: number) => {
     setAddingToCart(productId);
     try {
-      const response = await fetch('/api/cart', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+      const response = await fetch("/api/cart", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ productId }),
       });
       const data = await response.json();
       if (data.success) {
-        toast.success(`${data.data.items.find((item: Product) => item.id === productId)?.name || 'Producto'} agregado al carrito`);
+        toast.success(
+          `${
+            data.data.items.find((item: Product) => item.id === productId)
+              ?.name || "Producto"
+          } agregado al carrito`
+        );
         onProductAdded?.();
       } else {
-        toast.error(data.message || 'Error al agregar producto');
+        toast.error(data.message || "Error al agregar producto");
       }
     } catch (error) {
-      toast.error('Error de conexión al agregar producto');
+      toast.error("Error de conexión al agregar producto");
     } finally {
       setAddingToCart(null);
     }

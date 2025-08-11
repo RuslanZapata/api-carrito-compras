@@ -1,8 +1,14 @@
-import { Plus } from 'lucide-react';
-import { Product } from '../types';
-import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import { Plus } from "lucide-react";
+import { Product } from "@/types";
+import { Button } from "@/components/atoms/button";
+import { Badge } from "@/components/atoms/badge";
+import {
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/atoms/card";
 
 interface ProductCardProps {
   product: Product;
@@ -10,7 +16,11 @@ interface ProductCardProps {
   loading: boolean;
 }
 
-export function ProductCard({ product, onAddToCart, loading }: ProductCardProps) {
+export function ProductCard({
+  product,
+  onAddToCart,
+  loading,
+}: ProductCardProps) {
   return (
     <Card className="hover:shadow-lg transition-shadow">
       <CardHeader>

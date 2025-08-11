@@ -1,5 +1,5 @@
 import React from "react";
-import BudgetOptimizer from "../components/BudgetOptimizer";
+import BudgetOptimizer from "@/components/BudgetOptimizer";
 
 const OptimizerPage = () => {
   return (

@@ -1,5 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { ShoppingCart } from 'lucide-react';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/atoms/card";
+import { ShoppingCart } from "lucide-react";
 
 export function CartSkeleton() {
   return (

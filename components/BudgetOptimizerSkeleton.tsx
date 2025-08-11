@@ -1,5 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Calculator } from 'lucide-react';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/atoms/card";
+import { Calculator } from "lucide-react";
 
 export default function BudgetOptimizerSkeleton() {
   return (

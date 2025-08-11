@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
-import { useCartRefresh } from "../context/CartRefreshContext";
-import Cart from "../components/Cart";
+import { useCartRefresh } from "@/context/CartRefreshContext";
+import Cart from "@/components/Cart";
 
 const CartPage = () => {
   const cartRefreshContext = useCartRefresh();

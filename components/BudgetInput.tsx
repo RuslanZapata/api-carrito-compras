@@ -1,7 +1,7 @@
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { Button } from '../ui/button';
-import { DollarSign } from 'lucide-react';
+import { Input } from "@/components/atoms/input";
+import { Label } from "@/components/atoms/label";
+import { Button } from "@/components/atoms/button";
+import { DollarSign } from "lucide-react";
 
 interface BudgetInputProps {
   budget: string;
@@ -10,7 +10,12 @@ interface BudgetInputProps {
   onOptimize: () => void;
 }
 
-export default function BudgetInput({ budget, setBudget, loading, onOptimize }: BudgetInputProps) {
+export default function BudgetInput({
+  budget,
+  setBudget,
+  loading,
+  onOptimize,
+}: BudgetInputProps) {
   return (
     <div className="space-y-2">
       <Label htmlFor="budget" className="flex items-center">
@@ -33,7 +38,7 @@ export default function BudgetInput({ budget, setBudget, loading, onOptimize }: 
               Calculando...
             </>
           ) : (
-            'Optimizar'
+            "Optimizar"
           )}
         </Button>
       </div>
