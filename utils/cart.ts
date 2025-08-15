@@ -1,4 +1,4 @@
-import { Product, CartItem, Cart } from '../types';
+import { Product, CartItem, Cart } from '@/types';
 
 // Carrito en memoria
 const cartItems = new Map<number, CartItem>();

@@ -1,15 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getCart, addToCart, clearCart } from "@/utils/cart";
-import { Product, ApiResponse, Cart } from "@/types";
-
-const availableProducts: Product[] = [
-  { id: 1, name: "Producto 1", price: 60 },
-  { id: 2, name: "Producto 2", price: 100 },
-  { id: 3, name: "Producto 3", price: 120 },
-  { id: 4, name: "Producto 4", price: 70 },
-  { id: 5, name: "Producto 5", price: 40 },
-  { id: 6, name: "Producto 6", price: 90 },
-];
+import { ApiResponse, Cart } from "@/types";
+import { catalogProducts } from "@/utils/catalogProducts";
 
 export async function GET(): Promise<NextResponse<ApiResponse<Cart>>> {
   try {
@@ -49,7 +41,7 @@ export async function POST(
       );
     }
 
-    const product = availableProducts.find((p) => p.id === Number(productId));
+    const product = catalogProducts.find((p) => p.id === Number(productId));
 
     if (!product) {
       return NextResponse.json(

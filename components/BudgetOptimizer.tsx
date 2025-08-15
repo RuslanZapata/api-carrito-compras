@@ -36,7 +36,7 @@ export default function BudgetOptimizer() {
 
   const fetchAvailableProducts = async () => {
     try {
-      const response = await fetch("/api/budget-optimizer");
+      const response = await fetch("/api/products");
       const data = await response.json();
       if (data.success) {
         setAvailableProducts(data.data);
